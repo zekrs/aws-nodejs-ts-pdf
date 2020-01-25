@@ -1,0 +1,56 @@
+service:
+  name: aws-nodejs-ts-pdf-poc
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-2
+  stage: dev
+  profile: serverless-profile
+  apiGateway:
+    minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
+  environment:
+    IS_OFFLINE: ${opt:offline}
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+
+# Add the serverless-webpack plugin
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-apigw-binary
+
+layers:
+  HeadlessChrome:
+    name: HeadlessChrome
+    compatibleRuntimes:
+      - nodejs12.x
+    description: Required for headless chrome
+    package:
+      artifact: layers/chrome_aws_lambda.zip
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules:
+      forceExclude:
+        - chrome-aws-lambda
+  serverless-offline:
+    location: .webpack/service
+  apigwBinary:
+    types:
+      - '*/*'
+
+functions:
+  generate-pdf:
+    handler: functions/pdf.generate
+    layers:
+      - { Ref: HeadlessChromeLambdaLayer }
+    events:
+      - http:
+          method: get
+          path: pdf/generate/{typeId}
+          cors: true
+      - http:
+          method: get
+          path: pdf/generate
+          cors: true

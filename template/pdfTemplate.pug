@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title Our PDF Generator POC
+        style.
+            body {
+                font-family: Helvetica;
+            }
+            h1 {
+                font-size: 36px;
+            }
+            h3 {
+                font-size: 16px;
+            }
+            .testClass {
+                color: red;
+                font-weight: bold;
+            }
+        body
+            h1 PDF generator generated this file
+            h2 This PDF is generated from HTML-template
+            p Some text to print in PDF
+            - var type = typeId
+            #type
+            if type
+                p Request had an id = #{typeId}
+            else
+                p Request had an empty id.
+            
+            p(class='testClass') This line has some styles.
