@@ -2,7 +2,7 @@
 Generate a PDF in AWS Lambda with NodeJS, Webpack, Pug and Puppeteer
 
 ## Pre-reqs
-NodeJS, Typsecript, Serverless
+NodeJS, Typescript, Serverless
 
 ## To test PDF generator
 1. Clone this repo
