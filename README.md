@@ -1,5 +1,6 @@
 # aws-nodejs-ts-pdf
 Generate a PDF in AWS Lambda with NodeJS, Webpack, Pug and Puppeteer
+An article about this can be found [here](https://dev.to/zeka/generate-a-pdf-in-aws-lambda-with-nodejs-webpack-pug-and-puppeteer-4g59)
 
 ## Pre-reqs
 NodeJS, Typescript, Serverless
