@@ -12,19 +12,19 @@ const ts = {
     [
       path.resolve(__dirname, "node_modules"),
       path.resolve(__dirname, ".serverless"),
-      path.resolve(__dirname, ".webpack")
-    ]
+      path.resolve(__dirname, ".webpack"),
+    ],
   ],
   options: {
     transpileOnly: true,
-    experimentalWatchApi: true
-  }
+    experimentalWatchApi: true,
+  },
 };
 
 // all files with a `.pug` extension will be handled by `pug-loader`
 const pug = {
   test: /\.pug$/,
-  use: ["pug-loader"]
+  use: ["pug-loader"],
 };
 
 // Webpack configs
@@ -38,29 +38,31 @@ const config = {
   resolve: {
     extensions: [".mjs", ".json", ".ts", ".pug"],
     symlinks: false,
-    cacheWithContext: false
+    cacheWithContext: false,
   },
   output: {
     libraryTarget: "commonjs",
     path: path.join(__dirname, ".webpack"),
-    filename: "[name].js"
+    filename: "[name].js",
   },
   target: "node",
   externals: [nodeExternals()],
   module: {
-    rules: [ts, pug]
+    rules: [ts, pug],
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: "development"
+      NODE_ENV: "development",
     }),
-    new CopyWebpackPlugin([
-      {
-        from: "./template",
-        to: path.join(__dirname, ".webpack/service/template")
-      }
-    ])
-  ]
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "./template",
+          to: path.join(__dirname, ".webpack/service/template"),
+        },
+      ],
+    }),
+  ],
 };
 
 module.exports = config;
