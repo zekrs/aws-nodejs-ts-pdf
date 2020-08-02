@@ -36,9 +36,10 @@ custom:
         - chrome-aws-lambda
   serverless-offline:
     location: .webpack/service
+    useChildProcesses: true
   apigwBinary:
     types:
-      - '*/*'
+      - "*/*"
 
 functions:
   generate-pdf:
