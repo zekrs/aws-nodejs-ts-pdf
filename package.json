@@ -15,7 +15,7 @@
     "chrome-aws-lambda": "3.1.1",
     "html-loader": "1.1.0",
     "html-webpack-plugin": "^4.3.0",
-    "pug": "3.0.0",
+    "pug": "3.0.1",
     "pug-loader": "2.4.0",
     "puppeteer-core": "3.1.0",
     "source-map-support": "0.5.19"
