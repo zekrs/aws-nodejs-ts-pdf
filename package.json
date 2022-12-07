@@ -26,7 +26,7 @@
     "copy-webpack-plugin": "6.0.3",
     "fork-ts-checker-webpack-plugin": "5.0.13",
     "puppeteer": "3.1.0",
-    "serverless": "^1.77.1",
+    "serverless": "^3.25.1",
     "serverless-apigw-binary": "0.4.4",
     "serverless-offline": "6.5.0",
     "serverless-webpack": "5.3.3",
